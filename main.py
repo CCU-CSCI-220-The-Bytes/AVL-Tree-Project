@@ -35,16 +35,24 @@ class AVL_Tree():
     #def search(self, value): #return a node
     #def delete(self, value): #void
 
+#Function from https://www.geeksforgeeks.org/binary-search-tree-in-python/
+def inorder(root):
+    if root:
+        inorder(root.left)
+        print(root.val)
+        inorder(root.right)
+
 def main():
     myTree = AVL_Tree("b")
     myTree.insert("a")
     myTree.insert("c")
     myTree.insert("d")
 
-    print(f"Root: {myTree.root.val}")
-    print(f"Left of root: {myTree.root.left.val}")
-    print(f"Right of root: {myTree.root.right.val}")
-    print(f"Right right of root: {myTree.root.right.right.val}")
+    #print(f"Root: {myTree.root.val}")
+    #print(f"Left of root: {myTree.root.left.val}")
+    #print(f"Right of root: {myTree.root.right.val}")
+    #print(f"Right right of root: {myTree.root.right.right.val}")
+    inorder(myTree.root)
 
 # Expected tree:
 #  /b\
