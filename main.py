@@ -46,6 +46,19 @@ def main():
     print(f"Right of root: {myTree.root.right.val}")
     print(f"Right right of root: {myTree.root.right.right.val}")
 
+ 
+    #Jordan’s created code  
+    # This code checks each node and prints its height 
+
+    if myTree.root: 
+        print(f"Height of root {myTree.root.val}: {get_height(myTree.root)}") 
+    if myTree.root.left: 
+        print(f"Height of left child {myTree.root.left.val}: {get_height(myTree.root.left)}") 
+    if myTree.root.right: 
+        print(f"Height of right child {myTree.root.right.val}: {get_height(myTree.root.right)}") 
+    if myTree.root.right.right: 
+        print(f"Height of right-right child {myTree.root.right.right.val}: {get_height(myTree.root.right.right)}")
+
 # Expected tree:
 #  /b\
 # a  c\
