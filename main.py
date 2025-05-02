@@ -8,21 +8,31 @@ class Node:
 # AVL tree: a binary search tree with a balance condition
 # for all nodes, the height of the left and the right must not be more than 1 apart.
 class AVL_Tree():
-    def __init__(self, rootNode):
-        self.root = rootNode
+    def __init__(self, rootVal):
+        self.rootNode = Node(rootVal)
 
-    #insert(self, newNode) 
-    #search(self, value) 
-    #delete(self, value) 
+    def insert(self, value): #void
+        #for testing purposes, just always insert to the left
+        newNode = Node(value)
+        parentNode = self.rootNode
+
+        while parentNode.left != None:
+            parentNode = parentNode.left
+        parentNode.left = newNode
+
+    #def search(self, value): #return a node
+    #def delete(self, value): #void
 
 def main():
-    myNode = Node("a")
-    myNode.left = Node("c")
-    myNode.right = Node("z")
+    myTree = AVL_Tree("a")
+    myTree.insert("b")
+    myTree.insert("c")
+    myTree.insert("d")
 
-    print(f" {myNode.value}")
-    print("/ \\")
-    print(f"{myNode.left.value}  {myNode.right.value}")
+    currNode = myTree.rootNode
+    while currNode != None:
+        print(currNode.value)
+        currNode = currNode.left
 
 
 
