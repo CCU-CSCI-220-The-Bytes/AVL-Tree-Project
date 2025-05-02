@@ -1,4 +1,4 @@
-# From https://www.geeksforgeeks.org/avl-tree-in-python/
+# Node class from https://www.geeksforgeeks.org/avl-tree-in-python/
 class Node:
     def __init__(self, value):
         self.value = value
