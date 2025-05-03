@@ -48,10 +48,6 @@ def main():
     myTree.insert("c")
     myTree.insert("d")
 
-    #print(f"Root: {myTree.root.val}")
-    #print(f"Left of root: {myTree.root.left.val}")
-    #print(f"Right of root: {myTree.root.right.val}")
-    #print(f"Right right of root: {myTree.root.right.right.val}")
     inorder(myTree.root)
 
 # Expected tree:
