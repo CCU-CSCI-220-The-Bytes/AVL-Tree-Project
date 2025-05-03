@@ -32,7 +32,25 @@ class AVL_Tree():
                     parentNode = parentNode.right
             elif newNode.val == parentNode.val:
                 raise Exception(f"Value {newNode.val} already exists in tree")
-    #def search(self, value): #return a node
+
+    def search(self, value): #return a node, or "None"
+        currNode = self.root
+
+        comparisons = 0
+        while currNode != None and value != currNode.val:
+            if value < currNode.val:
+                comparisons += 1
+                currNode = currNode.left
+            elif value > currNode.val:
+                comparisons += 1
+                currNode = currNode.right
+
+        if currNode == None:
+            print(f"Value \"{value}\" couldn't be found in {comparisons} comparisons")
+        else:
+            print(f"Value \"{value}\" was found in {comparisons} comparisons")
+
+        return currNode
     #def delete(self, value): #void
 
 #Function from https://www.geeksforgeeks.org/binary-search-tree-in-python/
@@ -68,6 +86,10 @@ def main():
     nameTree.insert("Clarence")
     
     inorder_height(nameTree.root)
+    print()
+
+    nameTree.search("Aiden")
+    nameTree.search("George")
 
 
 if __name__ == '__main__':
