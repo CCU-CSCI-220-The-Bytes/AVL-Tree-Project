@@ -42,13 +42,32 @@ def inorder(root):
         print(root.val)
         inorder(root.right)
 
+def inorder_height(root, height = 0):
+    if root:
+        inorder_height(root.left, height+1)
+        print(root.val, height)
+        inorder_height(root.right, height+1)
+
 def main():
-    myTree = AVL_Tree("b")
-    myTree.insert("a")
+    myTree = AVL_Tree("a")
+    myTree.insert("b")
     myTree.insert("c")
     myTree.insert("d")
+    myTree.insert("e")
 
-    inorder(myTree.root)
+    inorder_height(myTree.root)
+    print()
+
+    nameTree = AVL_Tree("Jordan")
+    nameTree.insert("Thaddeus")
+    nameTree.insert("Trent")
+    nameTree.insert("Tyler")
+    nameTree.insert("Kevin")
+    nameTree.insert("Bella")
+    nameTree.insert("Aiden")
+    nameTree.insert("Clarence")
+    
+    inorder_height(nameTree.root)
 
 
 if __name__ == '__main__':
