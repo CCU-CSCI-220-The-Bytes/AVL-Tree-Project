@@ -30,8 +30,8 @@ class AVL_Tree():
                     success = True
                 else:
                     parentNode = parentNode.right
-        
-
+            elif newNode.val == parentNode.val:
+                raise Exception(f"Value {newNode.val} already exists in tree")
     #def search(self, value): #return a node
     #def delete(self, value): #void
 
@@ -50,10 +50,6 @@ def main():
 
     inorder(myTree.root)
 
-# Expected tree:
-#  /b\
-# a  c\
-#      d
 
 if __name__ == '__main__':
     main()
