@@ -37,7 +37,10 @@ class AVL_Tree():
         currNode = self.root
 
         comparisons = 0
+        #Since this is a binary search tree we only need to go deeper left or right, not traverse the entire tree.
+        #Only stop when the current node doesn't exist or when we have found the value
         while currNode != None and value != currNode.val:
+            #Binary search yayyy
             if value < currNode.val:
                 comparisons += 1
                 currNode = currNode.left
@@ -49,8 +52,8 @@ class AVL_Tree():
             print(f"Value \"{value}\" couldn't be found in {comparisons} comparisons")
         else:
             print(f"Value \"{value}\" was found in {comparisons} comparisons")
-
         return currNode
+
     #def delete(self, value): #void
 
 #Function from https://www.geeksforgeeks.org/binary-search-tree-in-python/
