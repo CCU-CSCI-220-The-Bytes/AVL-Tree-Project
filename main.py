@@ -1,3 +1,5 @@
+import random
+
 # Node class from https://www.geeksforgeeks.org/avl-tree-in-python/
 class Node:
     def __init__(self, value):
@@ -75,30 +77,124 @@ def inorder_height(root, height = 0):
         print(root.val, height)
         inorder_height(root.right, height+1)
 
+def inorder_iterative(root):
+    currNode = root
+    stack = []
+    previousAction = 0
+
+    count = 0
+    while True:
+        while currNode.left != None and previousAction != "L" and previousAction != "R": #L step of LVR
+            stack.append(currNode)
+            stack.append("L")
+            currNode = currNode.left
+            previousAction = "Down"
+
+        if previousAction != "R": print(currNode.val) #V step of LVR
+
+        if currNode.right != None and previousAction != "R": #R step of LVR
+            stack.append(currNode)
+            stack.append("R")
+            currNode = currNode.right
+            previousAction = "Down"
+        else:
+            if len(stack) == 0: #this exit condition will exit if the root has no children on the right
+                break
+            #go back up
+            previousAction = stack.pop()
+            currNode = stack.pop()
+
+        #if len(stack) == 0 and previousAction == "R":
+        #    break
+        if count > 9999999:
+            print("Loop limit exceeded for inorder_iterative")
+            break
+
+def inorder_iterative_height(root):
+    currNode = root
+    stack = []
+    previousAction = 0
+    currHeight = 0
+
+    count = 0
+    while True:
+        while currNode.left != None and previousAction != "L" and previousAction != "R": #L step of LVR
+            stack.append(currNode)
+            stack.append("L")
+            currNode = currNode.left
+            previousAction = "Down"
+            currHeight += 1
+
+        if previousAction != "R": print(currNode.val, currHeight) #V step of LVR
+
+        if currNode.right != None and previousAction != "R": #R step of LVR
+            stack.append(currNode)
+            stack.append("R")
+            currNode = currNode.right
+            previousAction = "Down"
+            currHeight += 1
+        else:
+            if len(stack) == 0: #this exit condition will exit if the root has no children on the right
+                break
+            #go back up
+            previousAction = stack.pop()
+            currNode = stack.pop()
+            currHeight -= 1
+
+        if count > 9999999:
+            print("Loop limit exceeded for inorder_iterative")
+            break
+
+def tree_height(root):
+    currNode = root
+    stack = []
+    previousAction = 0
+    currHeight = 0
+    maxHeight = 0
+
+    count = 0
+    while True:
+        while currNode.left != None and previousAction != "L" and previousAction != "R": #L step of LVR
+            stack.append(currNode)
+            stack.append("L")
+            currNode = currNode.left
+            previousAction = "Down"
+            currHeight += 1
+            if currHeight > maxHeight: maxHeight = currHeight
+
+        #if previousAction != "R": print(currNode.val, currHeight) #V step of LVR
+
+        if currNode.right != None and previousAction != "R": #R step of LVR
+            stack.append(currNode)
+            stack.append("R")
+            currNode = currNode.right
+            previousAction = "Down"
+            currHeight += 1
+            if currHeight > maxHeight: maxHeight = currHeight
+        else:
+            if len(stack) == 0: #this exit condition will exit if the root has no children on the right
+                break
+            #go back up
+            previousAction = stack.pop()
+            currNode = stack.pop()
+            currHeight -= 1
+
+        if count > 9999999:
+            print("Loop limit exceeded for inorder_iterative")
+            break
+    print(f"Max height of the tree was {maxHeight}")
+
 def main():
-    myTree = AVL_Tree("a")
-    myTree.insert("b")
+    myTree = AVL_Tree("b")
+    myTree.insert("a")
     myTree.insert("c")
     myTree.insert("d")
     myTree.insert("e")
 
     inorder_height(myTree.root)
-    print()
-
-    nameTree = AVL_Tree("Jordan")
-    nameTree.insert("Thaddeus")
-    nameTree.insert("Trent")
-    nameTree.insert("Tyler")
-    nameTree.insert("Kevin")
-    nameTree.insert("Bella")
-    nameTree.insert("Aiden")
-    nameTree.insert("Clarence")
-    
-    inorder_height(nameTree.root)
-    print()
-
-    nameTree.search("Aiden")
-    nameTree.search("George")
+    print("-"*35)
+    inorder_iterative_height(myTree.root)
+    tree_height(myTree.root)
 
 
 if __name__ == '__main__':
