@@ -30,39 +30,184 @@ class AVL_Tree():
                     success = True
                 else:
                     parentNode = parentNode.right
+            elif newNode.val == parentNode.val:
+                raise Exception(f"Value {newNode.val} already exists in tree")
         
 
-    #def search(self, value): #return a node
+        #Now, we have to check if our AVL tree remains balanced after the insertion
+        # (insert balance checking code here)
+
+        # NEWLY ADDED 
+        # Define a function to calculate height of a node
+        def height(node):
+            if not node:
+                return 0
+            # Height is 1 + the height of the taller child
+            return 1 + max(height(node.left), height(node.right))
+
+        # Define a function to compute the balance factor of a node
+        def get_balance(node):
+            if not node:
+                return 0
+            # Balance factor = height of left subtree - height of right subtree
+            return height(node.left) - height(node.right)
+
+        # Perform a left rotation (used in Right-Right or Right-Left imbalances)
+        def rotate_left(unbalanced_node):
+            print(f"Performing LEFT rotation on node: {unbalanced_node.val}")
+
+            new_root = unbalanced_node.right               # Right child becomes the new root
+            subtree_to_shift = new_root.left               # Temporarily store the left subtree of new root
+
+            new_root.left = unbalanced_node                # Move the unbalanced node to the left of new root
+            unbalanced_node.right = subtree_to_shift       # Reattach the stored subtree to the right of the old root
+
+            return new_root                                # Return the new root after rotation
+
+        # Perform a right rotation (used in Left-Left or Left-Right imbalances)
+        def rotate_right(unbalanced_node):
+            print(f"Performing RIGHT rotation on node: {unbalanced_node.val}")
+
+            new_root = unbalanced_node.left                # Left child becomes the new root
+            subtree_to_shift = new_root.right              # Temporarily store the right subtree of new root
+
+            new_root.right = unbalanced_node               # Move the unbalanced node to the right of new root
+            unbalanced_node.left = subtree_to_shift        # Reattach the stored subtree to the left of the old root
+
+            return new_root                                # Return the new root after rotation
+
+        # Rebalance a node if it has become unbalanced
+        def rebalance_node(node):
+            if not node:
+                return None
+
+            balance = get_balance(node)
+
+            # Case 1: Left-heavy subtree
+            if balance > 1:
+                # Left-Left case (single right rotation)
+                if get_balance(node.left) >= 0:
+                    return rotate_right(node)
+                # Left-Right case (double rotation: left then right)
+                else:
+                    node.left = rotate_left(node.left)
+                    return rotate_right(node)
+
+            # Case 2: Right-heavy subtree
+            if balance < -1:
+                # Right-Right case (single left rotation)
+                if get_balance(node.right) <= 0:
+                    return rotate_left(node)
+                # Right-Left case (double rotation: right then left)
+                else:
+                    node.right = rotate_right(node.right)
+                    return rotate_left(node)
+
+            # Balanced case — no rotation needed
+            return node
+
+        # Recursively rebalance the tree from the bottom up (post-order traversal)
+        def rebalance_from_root(node):
+            if node is None:
+                return None
+
+            # First rebalance left and right subtrees
+            node.left = rebalance_from_root(node.left)
+            node.right = rebalance_from_root(node.right)
+
+            # Then rebalance the current node
+            return rebalance_node(node)
+
+        # Apply rebalancing starting from the root and update the root reference
+        self.root = rebalance_from_root(self.root)
+
+    # -------------- END OF INSERTION CODE ------------------
+
+    def search(self, value): #return a node, or "None"
+        currNode = self.root
+
+        comparisons = 0
+        #Since this is a binary search tree we only need to go deeper left or right, not traverse the entire tree.
+        #Only stop when the current node doesn't exist or when we have found the value
+        while currNode != None and value != currNode.val:
+            #Binary search yayyy
+            if value < currNode.val:
+                comparisons += 1
+                currNode = currNode.left
+            elif value > currNode.val:
+                comparisons += 1
+                currNode = currNode.right
+
+        if currNode == None:
+            print(f"Value \"{value}\" couldn't be found in {comparisons} comparisons")
+        else:
+            print(f"Value \"{value}\" was found in {comparisons} comparisons")
+        return currNode
+
     #def delete(self, value): #void
 
+#Function from https://www.geeksforgeeks.org/binary-search-tree-in-python/
+#Helper function, prints all values of the tree using "in" order
+def inorder(root):
+    if root:
+        inorder(root.left)
+        print(root.val)
+        inorder(root.right)
+
+#Helper function, prints all values and their heights using "in" order
+def inorder_height(root, height = 0):
+    if root:
+        inorder_height(root.left, height+1)
+        print(root.val, height)
+        inorder_height(root.right, height+1)
+
 def main():
-    myTree = AVL_Tree("b")
-    myTree.insert("a")
-    myTree.insert("c")
-    myTree.insert("d")
 
-    print(f"Root: {myTree.root.val}")
-    print(f"Left of root: {myTree.root.left.val}")
-    print(f"Right of root: {myTree.root.right.val}")
-    print(f"Right right of root: {myTree.root.right.right.val}")
+    # ===== Original wordTree with preset words =====
+    wordTree = AVL_Tree("car")
+    wordTree.insert("football")
+    wordTree.insert("apple")
+    wordTree.insert("ladder")
+    wordTree.insert("family")
+    wordTree.insert("bagel")
+    wordTree.insert("motorcycle")
+    wordTree.insert("dog")
 
- 
-    #Jordan’s created code  
-    # This code checks each node and prints its height 
+    
+    # Asks the user for a word to insert into the tree and search for it
+    # the AVL tree shows after the user says "yes" to quit
+    while True:
+        newlyAddedWord = input("Enter a word to insert into the tree: ")
+        try:
+            wordTree.insert(newlyAddedWord)
+            print(f'"{newlyAddedWord}" has been inserted into the tree.')
+        except Exception as e:
+            print(e)
 
-    if myTree.root: 
-        print(f"Height of root {myTree.root.val}: {get_height(myTree.root)}") 
-    if myTree.root.left: 
-        print(f"Height of left child {myTree.root.left.val}: {get_height(myTree.root.left)}") 
-    if myTree.root.right: 
-        print(f"Height of right child {myTree.root.right.val}: {get_height(myTree.root.right)}") 
-    if myTree.root.right.right: 
-        print(f"Height of right-right child {myTree.root.right.right.val}: {get_height(myTree.root.right.right)}")
+        searchWord = input("Search for a word: ")
+        wordTree.search(searchWord)
 
-# Expected tree:
-#  /b\
-# a  c\
-#      d
+        quitTreeProgram = input("Do you want to quit? (yes/no): ").strip().lower()
+        if quitTreeProgram == "yes":
+            break
+
+    # the final output of the tree
+    print("\nFinal AVL Tree (in-order with height):")
+    inorder_height(wordTree.root)
+
+    
+    # Keep this original example tree if needed (are we using this for an example?)
+    # myTree = AVL_Tree("a")
+    # myTree.insert("b")
+    # myTree.insert("c")
+    # myTree.insert("d")
+    # myTree.insert("e")
+
+    # print("\nOriginal sample tree (in-order with height):")
+    # inorder_height(myTree.root)
+    # print()
+
 
 if __name__ == '__main__':
+    main()
     main()
