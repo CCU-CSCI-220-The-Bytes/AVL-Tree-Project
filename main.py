@@ -32,6 +32,10 @@ class AVL_Tree():
                     parentNode = parentNode.right
             elif newNode.val == parentNode.val:
                 raise Exception(f"Value {newNode.val} already exists in tree")
+        
+        #Now, we have to check if our AVL tree remains balanced after the insertion
+        # (insert balance checking code here)
+
 
     def search(self, value): #return a node, or "None"
         currNode = self.root
@@ -57,12 +61,14 @@ class AVL_Tree():
     #def delete(self, value): #void
 
 #Function from https://www.geeksforgeeks.org/binary-search-tree-in-python/
+#Helper function, prints all values of the tree using "in" order
 def inorder(root):
     if root:
         inorder(root.left)
         print(root.val)
         inorder(root.right)
 
+#Helper function, prints all values and their heights using "in" order
 def inorder_height(root, height = 0):
     if root:
         inorder_height(root.left, height+1)
