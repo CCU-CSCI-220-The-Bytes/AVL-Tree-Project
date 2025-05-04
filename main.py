@@ -154,12 +154,18 @@ def inorder(root):
         print(root.val)
         inorder(root.right)
 
-#Helper function, prints all values and their heights using "in" order
-def inorder_height(root, height = 0):
+#FIXED 
+# calculates the hieght of each node in the tree
+def height(node):
+    if not node:
+        return 0
+    return 1 + max(height(node.left), height(node.right))
+
+def inorder_with_true_height(root):
     if root:
-        inorder_height(root.left, height+1)
-        print(root.val, height)
-        inorder_height(root.right, height+1)
+        inorder_with_true_height(root.left)   # Visits the left subtree.
+        print(root.val, height(root))         # Prints the node’s value and its true height as calculated by the height() function.
+        inorder_with_true_height(root.right)  # visits the right subtree
 
 def main():
 
@@ -180,20 +186,20 @@ def main():
         newlyAddedWord = input("Enter a word to insert into the tree: ")
         try:
             wordTree.insert(newlyAddedWord)
-            print(f'"{newlyAddedWord}" has been inserted into the tree.')
+            print(f'\n"{newlyAddedWord}" has been inserted into the tree.')
         except Exception as e:
             print(e)
 
-        searchWord = input("Search for a word: ")
+        searchWord = input("\nSearch for a word: ")
         wordTree.search(searchWord)
 
-        quitTreeProgram = input("Do you want to quit? (yes/no): ").strip().lower()
+        quitTreeProgram = input("\nDo you want to quit? (yes/no): ").strip().lower()
         if quitTreeProgram == "yes":
             break
 
     # the final output of the tree
     print("\nFinal AVL Tree (in-order with height):")
-    inorder_height(wordTree.root)
+    inorder_with_true_height(wordTree.root)
 
     
     # Keep this original example tree if needed (are we using this for an example?)
