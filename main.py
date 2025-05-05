@@ -282,6 +282,12 @@ def main():
         searchWord = input("\nSearch for a word: ")
         wordTree.search(searchWord)
 
+        deleteWord = input("\nDo you want to delete a word? (yes/no): ").strip().lower()                # NEWLY ADDED //////
+        if deleteWord == "yes":
+            wordToDelete = input("\nEnter a word to delete: ")
+            wordTree.delete(wordToDelete)
+            print(f'"{wordToDelete}" deleted (if it existed).')                                 
+
         quitTreeProgram = input("\nDo you want to quit? (yes/no): ").strip().lower()
         if quitTreeProgram == "yes":
             break
