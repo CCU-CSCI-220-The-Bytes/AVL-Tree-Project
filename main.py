@@ -232,6 +232,8 @@ class AVL_Tree():
         
         # Starts deletion from the root and updates the root reference
         self.root = delete_node(self.root, value)
+        
+    # -------------- END OF DELETION CODE ------------------
 
 #Function from https://www.geeksforgeeks.org/binary-search-tree-in-python/
 #Helper function, prints all values of the tree using "in" order
