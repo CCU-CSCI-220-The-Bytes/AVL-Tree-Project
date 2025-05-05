@@ -143,8 +143,95 @@ class AVL_Tree():
         else:
             print(f"Value \"{value}\" was found in {comparisons} comparisons")
         return currNode
+        
+    # NEWLY ADDED 
+    # AVL FUnction Deletion Code
+    def delete(self, value):
+        # Calculates the height of a given node
+        def height(node):
+            if not node:
+                return 0
+            return 1 + max(height(node.left), height(node.right))
 
-    #def delete(self, value): #void
+        # Computes the balance factor of a node (left height - right height)
+        def get_balance(node):
+            if not node:
+                return 0
+            return height(node.left) - height(node.right)
+
+        # Performs a left rotation on the given unbalanced node
+        def rotate_left(z):
+            new_root = z.right
+            temp = new_root.left
+            new_root.left = z
+            z.right = temp
+            return new_root
+        
+        # Performs a right rotation on the given unbalanced node
+        def rotate_right(z):
+            new_root = z.left
+            temp = new_root.right
+            new_root.right = z
+            z.left = temp
+            return new_root
+        
+        # Rebalances the node if it becomes unbalanced after deletion
+        def rebalance(node):
+            if not node:
+                return None
+            balance = get_balance(node)
+
+            # Left heavy 
+            if balance > 1:
+                if get_balance(node.left) >= 0:
+                    return rotate_right(node)
+                else:
+                    node.left = rotate_left(node.left)
+                    return rotate_right(node)
+
+            # Right heavy
+            if balance < -1:
+                if get_balance(node.right) <= 0:
+                    return rotate_left(node)
+                else:
+                    node.right = rotate_right(node.right)
+                    return rotate_left(node)
+
+            return node
+
+        # Finds the node with the smallest value in the given subtree
+        def min_value_node(node):
+            current = node
+            while current.left is not None:
+                current = current.left
+            return current
+
+        # Recursively deletes a node with the given key and rebalances the tree
+        def delete_node(root, key):
+            if not root:
+                return root
+
+            if key < root.val:
+                root.left = delete_node(root.left, key)
+            elif key > root.val:
+                root.right = delete_node(root.right, key)
+            else:
+                # Node with one child or no child
+                if root.left is None:
+                    return root.right
+                elif root.right is None:
+                    return root.left
+
+                # Node with two children: Get inorder successor
+                temp = min_value_node(root.right)
+                root.val = temp.val
+                root.right = delete_node(root.right, temp.val)
+
+            # calls for rebalance after deletion 
+            return rebalance(root)
+        
+        # Starts deletion from the root and updates the root reference
+        self.root = delete_node(self.root, value)
 
 #Function from https://www.geeksforgeeks.org/binary-search-tree-in-python/
 #Helper function, prints all values of the tree using "in" order
