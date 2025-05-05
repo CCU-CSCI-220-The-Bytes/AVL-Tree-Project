@@ -12,7 +12,14 @@ class AVL_Tree():
         self.root = Node(rootVal)
 
     def insert(self, value): #void
-        #for now we will insert alphabetically, but do no balancing
+        # Covers the invalid inputs
+        # Checks if the input is a number (int or float)
+    if isinstance(value, (int, float)) or (isinstance(value, str) and value.isnumeric()):
+        raise Exception("Value cannot be a number")
+
+    # Checks if the value is an empty string
+    if value == "":
+        raise Exception("Value cannot be empty string")
         newNode = Node(value)
         parentNode = self.root
 
