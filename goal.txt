@@ -4,14 +4,16 @@ Self-Balancing Dictionary with AVL Trees
         Implement a dictionary (word lookup system) using an AVL tree to 
         maintain alphabetical order and ensure efficient search, insertion, and deletion.
 
+    COMPLETED:
+        ○ Research AVL tree properties and operations 
+        ○ Define the structure for dictionary entries  
+        ○ Implement basic AVL tree structure with node rotations (left-single, 
+        right-single, left-double and right-double rotations) 
+        ○ Test insertion and ensure balancing after each operation 
+        ○ Implement search and deletion functionality 
+        ○ Handle edge cases like duplicate words and invalid input 
 
-    ○ Research AVL tree properties and operations 
-    ○ Define the structure for dictionary entries  
-    ○ Implement basic AVL tree structure with node rotations (left-single, 
-    right-single, left-double and right-double rotations) 
-    ○ Test insertion and ensure balancing after each operation 
-    ○ Implement search and deletion functionality 
-    ○ Handle edge cases like duplicate words and invalid input 
-    ○ Compare this AVL search tree performance with Python’s built-in 
-    dictionary 
-    ○ Benchmark insertion and deletion times with increasing data sizes
+    TODO:
+        ○ Compare this AVL search tree performance with Python’s built-in 
+        dictionary 
+        ○ Benchmark insertion and deletion times with increasing data sizes

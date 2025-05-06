@@ -1,18 +1,14 @@
 # Import Modules
 from ..clearterminal import *
+from ..node import *
 
-def searchWord(lineBarrier):
+def searchWord(wordTree:AVL_Tree, lineBarrier):
 
     # Declare Variables 
     userInput = ""
-    foundWord = ""
+    resultMessage = ""
     foundWordFlag = False
     errorFlag = False
-
-    
-    '''
-        TODO:   Link search to function
-    '''
 
     # Start Loop to keep user in menu
     while userInput != "B":
@@ -20,32 +16,32 @@ def searchWord(lineBarrier):
         print(lineBarrier)
         print("Search a Word")
         print(lineBarrier)
-        print("Press B to go back to Menu")
+        print("B. To go back to Menu")
         print(lineBarrier)
 
         # If there was an error previously (Wrong Input OR Word in NOT AVL) show message
         if (errorFlag):
-            if (userInput == ""):
+            if ((userInput == "") or (userInput.isnumeric())):
                 print("Sorry, Enter a Word!")
             else:
-                print(f"{userInput} not in AVL!")
+                print(resultMessage)
             
             print(lineBarrier)
 
         # If search went successfully show message
         if (foundWordFlag):
-            print(f"{userInput} found in AVL!")
+            print(resultMessage)
             print(lineBarrier)
 
-
         # Get user input
-        userInput = input().title()
+        userInput = input().title().lstrip()
 
-        # Place holder for search function
-        foundWord = "Test"
+        # Call Node file to search into tree
+        foundword, resultMessage = wordTree.search(userInput)
 
-        # Check to see if word was found
-        if (userInput == foundWord):
+        # If word was found in AVL and input is not a number 
+        # show results on next loop
+        if ((foundword != None) and (userInput.isnumeric() == False)):
             foundWordFlag = True
             errorFlag = False
         # Otherwise prompt error

@@ -1,17 +1,9 @@
 '''
-    Menu Layout by Trent
+    Menu Layout 
+     
+    Developed by Jordan and Trent
 
     Purpose: A simple menu layout our AVL
-    Notes: Not official, wanted an outline 
-
-'''
-
-'''
-    NOTE: For testing I set the word "Test" for all functions
-
-    Insert => "Sorry, Test already in list!" 
-    Insert => "Test, found in AVL!" <= Possibly call class function for output and show what level it's at.
-    Insert => "Test deleted from AVL"
 
 '''
 
@@ -20,7 +12,7 @@ from packages import *
 
 # Declare Global Variables
 dashLine = "-"
-numOfLines = 35
+numOfLines = 50
 lineBarrier = dashLine * numOfLines 
 
 # Shows menu to user
@@ -29,12 +21,23 @@ def menu():
     userInput = ""
     errorFlag = False
 
+
+    # ===== Original wordTree with preset words =====
+    wordTree = AVL_Tree("Car")
+    wordTree.insert("Football")
+    wordTree.insert("Apple")
+    wordTree.insert("Ladder")
+    wordTree.insert("Family")
+    wordTree.insert("Bagel")
+    wordTree.insert("Motorcycle")
+    wordTree.insert("Dog")
+
     # Print header for start up
     print(lineBarrier)
     print("Welcome, user!")
 
     # Start Loop to keep user in menu
-    while userInput != "Q":
+    while True:
         # Print menu header
         print(lineBarrier)
         print("AVL Word Look Up Menu")
@@ -68,15 +71,16 @@ def menu():
         '''
             Switch Statement
             Based on Input go to function, and reset errorFlag
-            If input DOES NOT match cases, raise errorFlag
+            If input DOES NOT match any cases, raise errorFlag
 
             Menu Options
 
             1. Insert
             2. Search
             3. Delete
+            Q. Quit
 
-            NOTE: Parameters (Class object [Node], lineBarrier)
+            NOTE: Parameters (wordTree[AVL Tree Object], lineBarrier)
 
         '''
 
@@ -86,20 +90,25 @@ def menu():
                 # Clear Terminal
                 terminalCleaner()
                 errorFlag = False
-                insertWord(lineBarrier)
+                insertWord(wordTree, lineBarrier)
             case "2":
                 # Clear Terminal
                 terminalCleaner()
                 errorFlag = False
-                searchWord(lineBarrier)
+                searchWord(wordTree, lineBarrier)
             case "3":
                 # Clear Terminal
                 terminalCleaner()
                 errorFlag = False
-                deleteWord(lineBarrier)
+                deleteWord(wordTree, lineBarrier)
             case "Q":
                 print(dashLine * numOfLines)
+                terminalCleaner()
                 print("Goodbye!")
+                print(dashLine * numOfLines)
+                print("Final AVL Tree (in-order with height):")
+                print(dashLine * numOfLines)
+                inorder_with_true_height(wordTree.root)
                 break
             case _:
                 errorFlag = True

@@ -1,19 +1,14 @@
 # Import Modules
 from ..clearterminal import *
+from ..node import *
 
-def insertWord(lineBarrier):
+def insertWord(wordTree:AVL_Tree, lineBarrier):
 
     # Declare Variables 
     userInput = ""
-    foundWord = ""
+    errorMessage = ""
     wordInsertedFlag = False
     errorFlag = False
-
-    '''
-        NOTE:   We need to have a search in this function to search for duplicate words
-                If found, Alert User
-    
-    '''
 
     # Start Loop to keep user in menu
     while userInput != "B":
@@ -21,39 +16,35 @@ def insertWord(lineBarrier):
         print(lineBarrier)
         print("Insert a Word")
         print(lineBarrier)
-        print("Press B to go back to Menu")
+        print("B. To go back to Menu")
         print(lineBarrier)
 
         # If there was an error previously (Wrong Input OR Word in AVL) show message
         if (errorFlag):
-            if (userInput == foundWord):
-                print(f"Sorry, {userInput} already in list!")
-            else:
-                print("Sorry, Enter a Word!")
+            print(errorMessage)
             print(lineBarrier)
 
         # If insert went successfully show message
         if (wordInsertedFlag):
-            print(f"Inserted {userInput} to dictonary!")
+            print(f"Inserted {userInput} to tree!")
             print(lineBarrier)
         
 
-
         # Get user input
         # Title if two words, ice cream -> Ice Cream
-        userInput = input().title()
+        userInput = input().title().lstrip()
 
-        # Place holder for search function
-        foundWord = "Test"
+        # Call Node file to insert into tree
+        errorMessage, errorFlag = wordTree.insert(userInput)
 
-        # If userInput is not in AVL and not empty append it to dictonary
-        if ((userInput != foundWord) and (userInput != "")):
+        # If there is no error message and errorFlag returned false from Node File 
+        # show message to user on next loop!
+        if ((errorMessage == "") and (errorFlag == False)):
             print(lineBarrier)
             errorFlag = False
             wordInsertedFlag = True
-        # Otherwise raise error
+        # Otherwise show error
         else:
-            errorFlag = True
             wordInsertedFlag = False
         
         # Clear terminal in loop
