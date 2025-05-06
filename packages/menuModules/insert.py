@@ -14,7 +14,7 @@ def insertWord(wordTree:AVL_Tree, lineBarrier):
     while userInput != "B":
         # Print Header
         print(lineBarrier)
-        print("Insert a Word")
+        print("Insert a Word".center(50))
         print(lineBarrier)
         print("B. To go back to Menu")
         print(lineBarrier)
@@ -34,21 +34,28 @@ def insertWord(wordTree:AVL_Tree, lineBarrier):
         # Title if two words, ice cream -> Ice Cream
         userInput = input().title().lstrip()
 
-        # Call Node file to insert into tree
-        errorMessage, errorFlag = wordTree.insert(userInput)
-
-        # If there is no error message and errorFlag returned false from Node File 
-        # show message to user on next loop!
-        if ((errorMessage == "") and (errorFlag == False)):
-            print(lineBarrier)
-            errorFlag = False
-            wordInsertedFlag = True
-        # Otherwise show error
+        # Check to see if input is return (B)
+        if (userInput == "B"):
+            # If so, break out of loop
+            break
+        # Otherwise, continue with insert
         else:
-            wordInsertedFlag = False
-        
-        # Clear terminal in loop
-        terminalCleaner()
+            
+            # Call Node file to insert into tree
+            errorMessage, errorFlag = wordTree.insert(userInput)
+
+            # If there is no error message and errorFlag returned false from Node File 
+            # show message to user on next loop!
+            if ((errorMessage == "") and (errorFlag == False)):
+                print(lineBarrier)
+                errorFlag = False
+                wordInsertedFlag = True
+            # Otherwise show error
+            else:
+                wordInsertedFlag = False
+            
+            # Clear terminal in loop
+            terminalCleaner()
 
     # Clear terminal if user returns
     terminalCleaner()

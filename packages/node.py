@@ -84,7 +84,7 @@ class AVL_Tree():
 
         # Perform a left rotation (used in Right-Right or Right-Left imbalances)
         def rotate_left(unbalanced_node):
-            print(f"Performing LEFT rotation on node: {unbalanced_node.val}")
+            # print(f"Performing LEFT rotation on node: {unbalanced_node.val}")
 
             new_root = unbalanced_node.right               # Right child becomes the new root
             subtree_to_shift = new_root.left               # Temporarily store the left subtree of new root
@@ -96,7 +96,7 @@ class AVL_Tree():
 
         # Perform a right rotation (used in Left-Left or Left-Right imbalances)
         def rotate_right(unbalanced_node):
-            print(f"Performing RIGHT rotation on node: {unbalanced_node.val}")
+            # print(f"Performing RIGHT rotation on node: {unbalanced_node.val}")
 
             new_root = unbalanced_node.left                # Left child becomes the new root
             subtree_to_shift = new_root.right              # Temporarily store the right subtree of new root

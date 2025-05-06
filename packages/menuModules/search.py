@@ -14,7 +14,7 @@ def searchWord(wordTree:AVL_Tree, lineBarrier):
     while userInput != "B":
         # Print Header
         print(lineBarrier)
-        print("Search a Word")
+        print("Search a Word".center(50))
         print(lineBarrier)
         print("B. To go back to Menu")
         print(lineBarrier)

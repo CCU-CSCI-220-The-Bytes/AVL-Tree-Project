@@ -17,3 +17,7 @@ Self-Balancing Dictionary with AVL Trees
         ○ Compare this AVL search tree performance with Python’s built-in 
         dictionary 
         ○ Benchmark insertion and deletion times with increasing data sizes
+
+
+    NOTE:
+        wordFile Came from Massachusetts Institute of Technology -> https://www.mit.edu/~ecprice/wordlist.10000

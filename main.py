@@ -40,13 +40,15 @@ def menu():
     while True:
         # Print menu header
         print(lineBarrier)
-        print("AVL Word Look Up Menu")
+        print("AVL Word Look Up Menu".center(50))
         print(lineBarrier)
 
         # Print menu options
         print("1. Insert a Word")
         print("2. Search for a Word")
         print("3. Delete a Word")
+        print("4. Overview of AVL Tree")
+        print("5. Benchmark Test")
         print("Q. Quit")
         print(lineBarrier)
 
@@ -78,6 +80,8 @@ def menu():
             1. Insert
             2. Search
             3. Delete
+            4. Current AVL Tree
+            5. Benchmark
             Q. Quit
 
             NOTE: Parameters (wordTree[AVL Tree Object], lineBarrier)
@@ -101,14 +105,23 @@ def menu():
                 terminalCleaner()
                 errorFlag = False
                 deleteWord(wordTree, lineBarrier)
+
+            case "4":
+                # Clear Terminal
+                terminalCleaner()
+                errorFlag = False
+                overview(wordTree, lineBarrier)
+
+            case "5":
+                # Clear Terminal
+                terminalCleaner()
+                errorFlag = False
+                benchmark(lineBarrier)
+
             case "Q":
                 print(dashLine * numOfLines)
-                terminalCleaner()
                 print("Goodbye!")
                 print(dashLine * numOfLines)
-                print("Final AVL Tree (in-order with height):")
-                print(dashLine * numOfLines)
-                inorder_with_true_height(wordTree.root)
                 break
             case _:
                 errorFlag = True

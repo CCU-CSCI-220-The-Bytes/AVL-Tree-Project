@@ -15,7 +15,7 @@ def deleteWord(wordTree:AVL_Tree, lineBarrier):
     while userInput != "B":
         # Print Header
         print(lineBarrier)
-        print("Delete a Word")
+        print("Delete a Word".center(50))
         print(lineBarrier)
         print("Press B to go back to Menu")
         print(lineBarrier)
@@ -57,7 +57,7 @@ def deleteWord(wordTree:AVL_Tree, lineBarrier):
 
                 # Show warning message for deletion
                 print(lineBarrier)
-                print("Warning!".center(35))
+                print("Warning!".center(50))
                 print(lineBarrier)
                 print(f"You are about to delete {foundword.val}.")
                 print("Would you like to continue? (yes/no)")
