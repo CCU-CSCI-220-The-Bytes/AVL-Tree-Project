@@ -225,8 +225,7 @@ def benchmark(lineBarrier):
         # Function to calculate total time
         def calculateTotalTime(sTime, fTime):
             totalTime = fTime - sTime
-            return round(totalTime, 4)
-        
+            return round(totalTime, 10)
 
         # Start Loop to keep user in menu
         while userInput != "B":
@@ -249,28 +248,33 @@ def benchmark(lineBarrier):
             
             # 50 WORDS
             print("Insertion of 50 words")
-            print(f"AVL Time: {testPicker("insert", "AVL", 50, None)} seconds")
-            print(f"Dictonary Time: {testPicker("insert", "DIC", 50, None)} seconds\n")
+            print(f"AVL Time: {testPicker("insert", "AVL", 50, None):.10f} seconds")
+            print(f"Dictonary Time: {testPicker("insert", "DIC", 50, None):.10f} seconds\n")
 
             # 100 WORDS
             print("Insertion of 100 words")
-            print(f"AVL Time: {testPicker("insert", "AVL", 100, None)} seconds")
-            print(f"Dictonary Time: {testPicker("insert", "DIC", 100, None)} seconds\n")
+            print(f"AVL Time: {testPicker("insert", "AVL", 100, None):.10f} seconds")
+            print(f"Dictonary Time: {testPicker("insert", "DIC", 100, None):.10f} seconds\n")
 
             # 500 WORDS
             print("Insertion of 500 words")
-            print(f"AVL Time: {testPicker("insert", "AVL", 500, None)} seconds")
-            print(f"Dictonary Time: {testPicker("insert", "DIC", 500, None)} seconds\n")
+            print(f"AVL Time: {testPicker("insert", "AVL", 500, None):.10f} seconds")
+            print(f"Dictonary Time: {testPicker("insert", "DIC", 500, None):.10f} seconds\n")
 
             # 1000 WORDS
             print("Insertion of 1000 words")
-            print(f"AVL Time: {testPicker("insert", "AVL", 1000, None)} seconds")
-            print(f"Dictonary Time: {testPicker("insert", "DIC", 1000, None)} seconds\n")
+            print(f"AVL Time: {testPicker("insert", "AVL", 1000, None):.10f} seconds")
+            print(f"Dictonary Time: {testPicker("insert", "DIC", 1000, None):.10f} seconds\n")
 
             # 5000 WORDS
             print("Insertion of 5000 words")
-            print(f"AVL Time: {testPicker("insert", "AVL", 5000, None)} seconds")
-            print(f"Dictonary Time: {testPicker("insert", "DIC", 5000, None)} seconds\n")
+            print(f"AVL Time: {testPicker("insert", "AVL", 5000, None):.10f} seconds")
+            print(f"Dictonary Time: {testPicker("insert", "DIC", 5000, None):.10f} seconds\n")
+
+            # 10000 WORDS
+            print("Insertion of 10000 words")
+            print(f"AVL Time: {testPicker("insert", "AVL", 10000, None):.10f} seconds")
+            print(f"Dictonary Time: {testPicker("insert", "DIC", 10000, None):.10f} seconds\n")
 
 
             # SEARCH TESTS
@@ -282,32 +286,38 @@ def benchmark(lineBarrier):
             # With 50 words find...
             wordToFind = "access"
             print(f'With a 50 words, search for "{wordToFind.title()}"')
-            print(f"AVL Time: {testPicker("search", "AVL", 50, wordToFind)} seconds")
-            print(f"Dictonary Time: {testPicker("search", "DIC", 50, wordToFind)} seconds\n")
+            print(f"AVL Time: {testPicker("search", "AVL", 50, wordToFind):.10f} seconds")
+            print(f"Dictonary Time: {testPicker("search", "DIC", 50, wordToFind):.10f} seconds\n")
 
             # With 100 words find...
             wordToFind = "achievement"
             print(f'With a 100 words, search for "{wordToFind.title()}"')
-            print(f"AVL Time: {testPicker("search", "AVL", 100, wordToFind)} seconds")
-            print(f"Dictonary Time: {testPicker("search", "DIC", 100, wordToFind)} seconds\n")
+            print(f"AVL Time: {testPicker("search", "AVL", 100, wordToFind):.10f} seconds")
+            print(f"Dictonary Time: {testPicker("search", "DIC", 100, wordToFind):.10f} seconds\n")
 
             # With 500 words find...
             wordToFind = "angel"
             print(f'With a 500 words, search for "{wordToFind.title()}"')
-            print(f"AVL Time: {testPicker("search", "AVL", 500, wordToFind)} seconds")
-            print(f"Dictonary Time: {testPicker("search", "DIC", 500, wordToFind)} seconds\n")
+            print(f"AVL Time: {testPicker("search", "AVL", 500, wordToFind):.10f} seconds")
+            print(f"Dictonary Time: {testPicker("search", "DIC", 500, wordToFind):.10f} seconds\n")
 
             # With 1000 words find...
             wordToFind = "baseball"
             print(f'With a 1000 words, search for "{wordToFind.title()}"')
-            print(f"AVL Time: {testPicker("search", "AVL", 1000, wordToFind)} seconds")
-            print(f"Dictonary Time: {testPicker("search", "DIC", 1000, wordToFind)} seconds\n")
+            print(f"AVL Time: {testPicker("search", "AVL", 1000, wordToFind):.10f} seconds")
+            print(f"Dictonary Time: {testPicker("search", "DIC", 1000, wordToFind):.10f} seconds\n")
 
             # With 5000 words find...
             wordToFind = "five"
             print(f'With a 5000 words, search for "{wordToFind.title()}"')
-            print(f"AVL Time: {testPicker("search", "AVL", 5000, wordToFind)} seconds")
-            print(f"Dictonary Time: {testPicker("search", "DIC", 5000, wordToFind)} seconds\n")
+            print(f"AVL Time: {testPicker("search", "AVL", 5000, wordToFind):.10f} seconds")
+            print(f"Dictonary Time: {testPicker("search", "DIC", 5000, wordToFind):.10f} seconds\n")
+
+            # With 10000 words find...
+            wordToFind = "zus"
+            print(f'With a 10000 words, search for "{wordToFind.title()}"')
+            print(f"AVL Time: {testPicker("search", "AVL", 10000, wordToFind):.10f} seconds")
+            print(f"Dictonary Time: {testPicker("search", "DIC", 10000, wordToFind):.10f} seconds\n")
 
 
             # DELETE TESTS
@@ -319,32 +329,38 @@ def benchmark(lineBarrier):
             # With 50 words find...
             wordToFind = "academy"
             print(f'With a 50 words, search for "{wordToFind.title()}" and delete it')
-            print(f"AVL Time: {testPicker("delete", "AVL", 50, wordToFind)} seconds")
-            print(f"Dictonary Time: {testPicker("delete", "DIC", 50, wordToFind)} seconds\n")
+            print(f"AVL Time: {testPicker("delete", "AVL", 50, wordToFind):.10f} seconds")
+            print(f"Dictonary Time: {testPicker("delete", "DIC", 50, wordToFind):.10f} seconds\n")
 
             # With 100 words find...
             wordToFind = "accounts"
             print(f'With a 100 words, search for "{wordToFind.title()}" and delete it')
-            print(f"AVL Time: {testPicker("delete", "AVL", 100, wordToFind)} seconds")
-            print(f"Dictonary Time: {testPicker("delete", "DIC", 100, wordToFind)} seconds\n")
+            print(f"AVL Time: {testPicker("delete", "AVL", 100, wordToFind):.10f} seconds")
+            print(f"Dictonary Time: {testPicker("delete", "DIC", 100, wordToFind):.10f} seconds\n")
 
             # With 500 words find...
             wordToFind = "amazon"
             print(f'With a 500 words, search for "{wordToFind.title()}" and delete it')
-            print(f"AVL Time: {testPicker("delete", "AVL", 500, wordToFind)} seconds")
-            print(f"Dictonary Time: {testPicker("delete", "DIC", 500, wordToFind)} seconds\n")
+            print(f"AVL Time: {testPicker("delete", "AVL", 500, wordToFind):.10f} seconds")
+            print(f"Dictonary Time: {testPicker("delete", "DIC", 500, wordToFind):.10f} seconds\n")
 
             # With 1000 words find...
             wordToFind = "attorney"
             print(f'With a 1000 words, search for "{wordToFind.title()}" and delete it')
-            print(f"AVL Time: {testPicker("delete", "AVL", 1000, wordToFind)} seconds")
-            print(f"Dictonary Time: {testPicker("delete", "DIC", 1000, wordToFind)} seconds\n")
+            print(f"AVL Time: {testPicker("delete", "AVL", 1000, wordToFind):.10f} seconds")
+            print(f"Dictonary Time: {testPicker("delete", "DIC", 1000, wordToFind):.10f} seconds\n")
 
             # With 5000 words find...
             wordToFind = "heather"
             print(f'With a 5000 words, search for "{wordToFind.title()}"')
-            print(f"AVL Time: {testPicker("delete", "AVL", 5000, wordToFind)} seconds")
-            print(f"Dictonary Time: {testPicker("delete", "DIC", 5000, wordToFind)} seconds\n")
+            print(f"AVL Time: {testPicker("delete", "AVL", 5000, wordToFind):.10f} seconds")
+            print(f"Dictonary Time: {testPicker("delete", "DIC", 5000, wordToFind):.10f} seconds\n")
+
+            # With 10000 words find...
+            wordToFind = "zus"
+            print(f'With a 10000 words, search for "{wordToFind.title()}"')
+            print(f"AVL Time: {testPicker("delete", "AVL", 10000, wordToFind):.10f} seconds")
+            print(f"Dictonary Time: {testPicker("delete", "DIC", 10000, wordToFind):.10f} seconds\n")
 
             print(lineBarrier)
             print("END OF TEST".center(50))
