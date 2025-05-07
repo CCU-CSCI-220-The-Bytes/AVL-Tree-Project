@@ -28,14 +28,14 @@ class AVL_Tree():
         # Checks if the input is a number (int or float)
         if isinstance(value, (int, float)) or (isinstance(value, str) and value.isnumeric()):
             # Returns Message and Status of Error (ErrorFlag)
-            errorMessage = "Value cannot be a number"
+            errorMessage = "The value cannot be a number"
             errorFlag = True
             return errorMessage, errorFlag
 
         # Checks if the value is an empty string
         if value == "":
             # Returns Message and Status of Error (ErrorFlag)
-            errorMessage = "Value cannot be empty string"
+            errorMessage = "The value cannot be empty string"
             errorFlag = True
             return errorMessage, errorFlag
         
@@ -63,7 +63,7 @@ class AVL_Tree():
                         parentNode = parentNode.right
                 elif newNode.val == parentNode.val:
                     # Returns Message and Status of Error (ErrorFlag)
-                    errorMessage =  f"Value {newNode.val} already exists in tree"
+                    errorMessage =  f"The value {newNode.val} already exists in tree"
                     errorFlag = True
                     return errorMessage, errorFlag
         
@@ -177,9 +177,9 @@ class AVL_Tree():
                 currNode = currNode.right
 
         if currNode == None:
-            resultMessage = f"Value \"{value}\" couldn't be found in {comparisons} comparisons"
+            resultMessage = f"The value \"{value}\" couldn't be found in {comparisons} comparisons"
         else:
-            resultMessage = f"Value \"{value}\" was found in {comparisons} comparisons"
+            resultMessage = f"The value \"{value}\" was found in {comparisons} comparisons"
         return currNode, resultMessage
         
     # NEWLY ADDED 
