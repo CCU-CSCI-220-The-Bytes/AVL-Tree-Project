@@ -43,26 +43,30 @@ class AVL_Tree():
         newNode = Node(value)
         parentNode = self.root
 
-        success = False
-        while not success:
-            if newNode.val < parentNode.val:
-                if parentNode.left == None:
-                    parentNode.left = newNode
-                    success = True
-                else:
-                    parentNode = parentNode.left
-            elif newNode.val > parentNode.val:
-                if parentNode.right == None:
-                    parentNode.right = newNode
-                    success = True
-                else:
-                    parentNode = parentNode.right
-            elif newNode.val == parentNode.val:
-                # Returns Message and Status of Error (ErrorFlag)
-                errorMessage =  f"Value {newNode.val} already exists in tree"
-                errorFlag = True
-                return errorMessage, errorFlag
-    
+        # Handles if there is no root node!
+        if parentNode is None:
+            self.root = Node(value)
+        else:
+            success = False
+            while not success:
+                if newNode.val < parentNode.val:
+                    if parentNode.left == None:
+                        parentNode.left = newNode
+                        success = True
+                    else:
+                        parentNode = parentNode.left
+                elif newNode.val > parentNode.val:
+                    if parentNode.right == None:
+                        parentNode.right = newNode
+                        success = True
+                    else:
+                        parentNode = parentNode.right
+                elif newNode.val == parentNode.val:
+                    # Returns Message and Status of Error (ErrorFlag)
+                    errorMessage =  f"Value {newNode.val} already exists in tree"
+                    errorFlag = True
+                    return errorMessage, errorFlag
+        
 
         #Now, we have to check if our AVL tree remains balanced after the insertion
         # (insert balance checking code here)

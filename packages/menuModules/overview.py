@@ -14,7 +14,14 @@ def overview(wordTree:AVL_Tree, lineBarrier):
         print(lineBarrier)
         print("Current AVL Tree (in-order with height):")
         print(lineBarrier)
-        inorder_with_true_height(wordTree.root)
+        
+        # Check to see if root is not none
+        if (wordTree.root is not None):
+            # If so, show AVL Tree
+            inorder_with_true_height(wordTree.root)
+        else:
+            print("No AVL Tree nodes!")
+        
         print(lineBarrier)
         print("B. To go back to Menu")
         print(lineBarrier)

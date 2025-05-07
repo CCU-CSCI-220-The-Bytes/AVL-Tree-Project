@@ -324,19 +324,19 @@ def benchmark(lineBarrier):
 
             # With 100 words find...
             wordToFind = "accounts"
-            print(f'With a 100 words, search for "{wordToFind.title()} and delete it"')
+            print(f'With a 100 words, search for "{wordToFind.title()}" and delete it')
             print(f"AVL Time: {testPicker("delete", "AVL", 100, wordToFind)} seconds")
             print(f"Dictonary Time: {testPicker("delete", "DIC", 100, wordToFind)} seconds\n")
 
             # With 500 words find...
             wordToFind = "amazon"
-            print(f'With a 500 words, search for "{wordToFind.title()} and delete it"')
+            print(f'With a 500 words, search for "{wordToFind.title()}" and delete it')
             print(f"AVL Time: {testPicker("delete", "AVL", 500, wordToFind)} seconds")
             print(f"Dictonary Time: {testPicker("delete", "DIC", 500, wordToFind)} seconds\n")
 
             # With 1000 words find...
             wordToFind = "attorney"
-            print(f'With a 1000 words, search for "{wordToFind.title()} and delete it"')
+            print(f'With a 1000 words, search for "{wordToFind.title()}" and delete it')
             print(f"AVL Time: {testPicker("delete", "AVL", 1000, wordToFind)} seconds")
             print(f"Dictonary Time: {testPicker("delete", "DIC", 1000, wordToFind)} seconds\n")
 
@@ -346,10 +346,11 @@ def benchmark(lineBarrier):
             print(f"AVL Time: {testPicker("delete", "AVL", 5000, wordToFind)} seconds")
             print(f"Dictonary Time: {testPicker("delete", "DIC", 5000, wordToFind)} seconds\n")
 
-
+            print(lineBarrier)
+            print("END OF TEST".center(50))
 
             # Get user input
-            print()
+            print(lineBarrier)
             userInput = input().title().lstrip()
 
         
