@@ -5,7 +5,7 @@ Also this project features a benchmark that tests the AVL tree alongside of Pyth
 
 Credit for this project goes to:
 
-Thaddeus-Kalinowski @Thaddeus-Kalinowski
-Jordan Stair @Stair622
-Trent Miller @BlizzardRAZE
-Tyler Simmons @Tyler-Simmons-driod
+Thaddeus-Kalinowski [@Thaddeus-Kalinowski]([url](https://github.com/Thaddeus-Kalinowski))<br/>
+Jordan Stair [@Stair622]([url](https://github.com/Stair622))<br/>
+Trent Miller [@BlizzardRAZE]([url](https://github.com/BlizzardRAZE))<br/>
+Tyler Simmons [@Tyler-Simmons-driod]([url](https://github.com/Tyler-Simmons-driod))
