@@ -63,7 +63,7 @@ class AVL_Tree():
                         parentNode = parentNode.right
                 elif newNode.val == parentNode.val:
                     # Returns Message and Status of Error (ErrorFlag)
-                    errorMessage =  f"The value {newNode.val} already exists in tree"
+                    errorMessage =  f"The value {newNode.val} already exists in the tree"
                     errorFlag = True
                     return errorMessage, errorFlag
         
