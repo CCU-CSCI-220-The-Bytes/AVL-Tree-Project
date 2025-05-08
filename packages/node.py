@@ -35,7 +35,7 @@ class AVL_Tree():
         # Checks if the value is an empty string
         if value == "":
             # Returns Message and Status of Error (ErrorFlag)
-            errorMessage = "The value cannot be empty string"
+            errorMessage = "The value cannot be an empty string"
             errorFlag = True
             return errorMessage, errorFlag
         
