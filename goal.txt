@@ -12,8 +12,6 @@ Self-Balancing Dictionary with AVL Trees
         ○ Test insertion and ensure balancing after each operation 
         ○ Implement search and deletion functionality 
         ○ Handle edge cases like duplicate words and invalid input 
-
-    TODO:
         ○ Compare this AVL search tree performance with Python’s built-in 
         dictionary 
         ○ Benchmark insertion and deletion times with increasing data sizes
